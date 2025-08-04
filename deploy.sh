@@ -177,24 +177,44 @@ test_deployment() {
     
     # Test data
     TEST_DATA='{
-        "event": "test_event",
-        "timestamp": 1703123456789,
-        "id": "test-123",
+        "event": "page view",
         "data": {
-            "id": "data-123",
-            "device": "desktop",
-            "source": "web",
-            "medium": "organic"
+            "domain": "www.example.com",
+            "title": "Website Title",
+            "referrer": "https://www.google.com/",
+            "search": "",
+            "id": "/"
         },
+        "context": {},
+        "globals": {
+            "pagetype": "unknown"
+        },
+        "custom": {},
         "user": {
-            "device": "desktop",
-            "session": "session-123"
+            "session": "mbb0ai263mbp"
+        },
+        "nested": [],
+        "consent": {
+            "analytics": true
+        },
+        "id": "1752140468984-9h6lhh-2",
+        "trigger": "load",
+        "entity": "page",
+        "action": "view",
+        "timestamp": 1752140468984,
+        "timing": 3.44,
+        "group": "9h6lhh",
+        "count": 2,
+        "version": {
+            "source": "3.4.2",
+            "tagging": "1"
         },
         "source": {
-            "id": "source-123",
-            "previous_id": "prev-123"
+            "type": "web",
+            "id": "https://www.example.com/",
+            "previous_id": "https://www.google.com/"
         }
-    }'
+        }'
     
     echo -e "${YELLOW}Testing API Gateway endpoint: $API_URL${NC}"
     
@@ -206,7 +226,7 @@ test_deployment() {
         "$API_URL")
     
     HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
-    BODY=$(echo "$RESPONSE" | head -n -1)
+    BODY=$(echo "$RESPONSE" | sed '$d')
     
     if [ "$HTTP_CODE" = "200" ]; then
         echo -e "${GREEN}✅ API Gateway test successful${NC}"
