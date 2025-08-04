@@ -1,0 +1,30 @@
+{
+  "name": "tracking-lambda-cdk",
+  "version": "1.0.0",
+  "description": "CDK infrastructure for tracking Lambda with API Gateway and Redshift",
+  "main": "lib/tracking-lambda-stack.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy",
+    "diff": "cdk diff",
+    "synth": "cdk synth"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "20.0.0",
+    "aws-cdk": "2.100.0",
+    "constructs": "^10.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "~5.0.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.100.0",
+    "cdk": "^2.1023.0",
+    "constructs": "^10.0.0"
+  }
+}
